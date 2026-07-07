@@ -45,7 +45,7 @@ const MemoList = (props: MemoListProps): JSX.Element => {
     //setCommentReEditingText("")
   }
 
-  const startMemoEdit = (target: MemoType) => {
+  const startMemoEdit = (target) => {
     setMemoEditingId(target.id);
     //setMemoEditText(target.text);
   }
