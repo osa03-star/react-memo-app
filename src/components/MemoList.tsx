@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { JSX } from 'react';
-import type { MemoType, CommentType } from "../types";
+import type { MemoType, CommentType } from "../types/index.tsx";
 import Editor from "./Editor";
 import ContentBody from "./ContentBody";
 import CommentList from "./CommentList";
@@ -12,61 +12,60 @@ type MemoListProps = {
 };
 
 const MemoList = (props: MemoListProps): JSX.Element => {
-  const [comments, setComments] = useState([])
-  const [editingMemoId, setMemoEditingId] = useState(null)
-  const [editMemoText, setMemoEditText] = useState("")
-  const [commentReEditingId, setCommentReEditingId] = useState(null)
-  const [commentReEditingText, setCommentReEditingText] = useState("")
-  const [commentEditingId, setCommentEditingId] = useState(null)
-  const [commentEditingText, setCommentEditingText] = useState("")
+  const [comments, setComments] = useState<CommentType[]>([])
+  const [editingMemoId, setMemoEditingId] = useState<number | null>(null)
+  //const [editMemoText, setMemoEditText] = useState("")
+  const [commentReEditingId, setCommentReEditingId] = useState<number | null>(null)
+  //const [commentReEditingText, setCommentReEditingText] = useState("")
+  const [commentEditingId, setCommentEditingId] = useState<number | null>(null)
 
-  const saveEditMemo = (id, text) => {
+  const saveEditMemo = (id: number, text: string) => {
     if (!text.trim()) return;
     console.log(text);
-    props.setMemos(prev => 
+    props.setMemos((prev: MemoType[]) => 
       prev.map(item =>
-        item.id === id ? {...item, text: text, date: new Date().toISOString()} : item
+        item.id === id ? {...item, text: text, date: new Date()} : item
       )
     )
 
     setMemoEditingId(null)
-    setMemoEditText("")
+    //setMemoEditText("")
   }
 
-  const saveEditComment = (id, text) => {
+  const saveEditComment = (id: number, text: string) => {
     if (!text.trim()) return;
     console.log(text);
-    setComments(prev => 
+    setComments((prev: CommentType[]) => 
       prev.map(item =>
         item.id === id ? {...item, text: text, date: new Date()} : item
       )
     )
 
     setCommentReEditingId(null)
-    setCommentReEditingText("")
+    //setCommentReEditingText("")
   }
 
-  const startMemoEdit = (target) => {
+  const startMemoEdit = (target: MemoType) => {
     setMemoEditingId(target.id);
-    setMemoEditText(target.text);
+    //setMemoEditText(target.text);
   }
 
-  const startReCommentEdit = (target) => {
+  const startReCommentEdit = (target: CommentType | MemoType) => {
 
     setCommentReEditingId(target.id);
-    setCommentReEditingText(target.text);
+    //setCommentReEditingText(target.text);
   }
 
-  const deleteMemo = (id) => {
+  const deleteMemo = (id: number) => {
     props.setMemos(prev => prev.filter(m => m.id !== id));
     setComments(prev => prev.filter(c => c.memoId !== id));
   };
 
-   const deleteComment = (id) => {
+   const deleteComment = (id: number) => {
     setComments(prev => prev.filter(c => c.id !== id));
   };
 
-  const saveComment = (memoId, text) => {
+  const saveComment = (memoId: number, text: string) => {
     console.log("保存しにきてる", text);
     if (!text.trim()) return;
     const id = comments.length > 0

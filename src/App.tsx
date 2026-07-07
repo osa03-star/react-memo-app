@@ -3,9 +3,10 @@ import './App.css'
 import Editor from "./components/Editor";
 import MemoList from "./components/MemoList";
 import type { JSX } from 'react';
+import type { MemoType } from "./types/index.tsx";
 
 function App(): JSX.Element {
-  const [memos, setMemos] = useState([])
+  const [memos, setMemos] = useState<MemoType[]>([])
 
   const pushMemo =  (text: string) => {
     if (!text.trim()) return;

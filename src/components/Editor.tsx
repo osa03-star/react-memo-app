@@ -10,7 +10,7 @@ type EditorProps = {
 
 
 const Editor = (props: EditorProps): JSX.Element => {
-  const [value, setValue] = useState(props.initialValue)
+  const [value, setValue] = useState<string>(props.initialValue ?? "")
   
   return(
     <>

@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import type { MemoType, CommentType } from "../types";
+import type { MemoType, CommentType } from "../types/index.tsx";
 import { GoPencil } from "react-icons/go";
 import { CiTrash } from "react-icons/ci";
 

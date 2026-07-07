@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import type{ MemoType, CommentType } from "../types";
+import type{ MemoType, CommentType } from "../types/index.tsx";
 import ContentBody from './ContentBody';
 import Editor from './Editor';
 
