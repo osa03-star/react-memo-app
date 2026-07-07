@@ -1,0 +1,52 @@
+.saved-memo{
+  border: 1px solid gray;
+  margin: 2% 5%;
+  width: 700px;
+  padding: 1%;
+
+  .header{
+    display: flex;
+    margin-bottom: 2%;
+  }
+  .header>:first-child {
+    margin-right: auto;
+  }
+  .memo{
+    margin-bottom: 2%;
+    text-align: left;
+  }
+  .comment{
+    .savedComment{
+      width: 80%;
+      margin: 2%;
+      background: #f3f4f6;
+      padding: 2% 1%;
+      border-radius: 6px;
+    }
+    .TextArea{
+
+    }
+
+    .icon{
+      display: block;
+    }
+  }
+  .editTextArea{
+    height: 200px;
+    width: 600px;
+    margin: 2%;
+    display: block;
+  }
+  .editSaveBtn{
+    margin: 2%;
+    width: 100px;
+    height: 40px;
+    border-radius: 11px;
+    border-width: medium;
+    border-style: none;
+    border-color: currentcolor;
+    border-image: initial;
+    background: green;
+    display: block;
+  }
+}
